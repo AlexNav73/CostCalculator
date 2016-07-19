@@ -1,4 +1,4 @@
-﻿using DiamondCostCalculator.DocumentContract.Excel.DTO;
+﻿using DiamondCostCalculator.DocumentContract.DTO;
 using System.Collections.Generic;
 
 namespace DiamondCostCalculator.DocumentContract.Excel

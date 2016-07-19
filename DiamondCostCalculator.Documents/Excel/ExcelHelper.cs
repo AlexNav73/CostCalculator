@@ -1,20 +1,24 @@
-﻿using DiamondCostCalculator.DocumentContract;
-using DiamondCostCalculator.DocumentContract.Excel.DTO;
-using DiamondCostCalculator.DocumentProvider.Excel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using DiamondCostCalculator.DocumentContract;
+using DiamondCostCalculator.DocumentContract.DTO;
+using DiamondCostCalculator.DocumentContract.Excel;
 
 namespace DiamondCostCalculator.Documents.Excel
 {
     public class ExcelHelper
     {
+        private IExcelDocument _document;
         private IEnumerator<Row> _rows;
 
-        public ExcelHelper(string fileName, string sheetName)
+        public ExcelHelper(IExcelDocument document)
         {
-            var doc = new ExcelDocument(fileName);
-            var reader = doc.GetReader(sheetName);
+            _document = document;
+        }
+
+        public void Open(string fileName, string sheetName)
+        {
+            _document.Open(fileName);
+            var reader = _document.GetReader(sheetName);
 
             _rows = reader.GetEnumerator();
         }

@@ -85,12 +85,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Excel\DTO\Cell.cs" />
-    <Compile Include="Excel\DTO\Row.cs" />
-    <Compile Include="Excel\IDocument.cs" />
+    <Compile Include="DTO\Cell.cs" />
+    <Compile Include="DTO\Row.cs" />
+    <Compile Include="Excel\IExcelDocument.cs" />
     <Compile Include="Excel\IExcelReader.cs" />
     <Compile Include="IFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Word\IWordReportCreator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

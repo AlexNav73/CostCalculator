@@ -9,12 +9,12 @@ using System.Text;
 
 namespace DiamondCostCalculator.DocumentProvider.Excel
 {
-    public class ExcelDocument : IDocument
+    public class ExcelDocument : IExcelDocument
     {
         private SpreadsheetDocument _document;
         private WorkbookPart _wbPart;
 
-        public ExcelDocument(string filePath)
+        public void Open(string filePath)
         {
             _document = SpreadsheetDocument.Open(filePath, false);
             _wbPart = _document.WorkbookPart;

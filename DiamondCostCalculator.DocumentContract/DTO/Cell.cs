@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiamondCostCalculator.DocumentContract.Excel.DTO
+namespace DiamondCostCalculator.DocumentContract.DTO
 {
     public struct Cell
     {
@@ -16,7 +16,6 @@ namespace DiamondCostCalculator.DocumentContract.Excel.DTO
 
         public T Unwrap<T>()
         {
-            var type = _value.GetType();
             if (_value is T) return (T)_value;
             throw new InvalidCastException();
         }

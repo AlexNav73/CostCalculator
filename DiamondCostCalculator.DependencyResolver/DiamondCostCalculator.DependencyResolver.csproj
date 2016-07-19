@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{402E6E4C-97D7-4D43-84C1-26E1934A5BEE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{673005D9-4078-4306-B6D6-8D80EC9521C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
-    <AssemblyName>ConsoleApplication1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>DiamondCostCalculator.DependencyResolver</RootNamespace>
+    <AssemblyName>DiamondCostCalculator.DependencyResolver</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,16 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Dependencies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DiamondCostCalculator.DependencyResolver\DiamondCostCalculator.DependencyResolver.csproj">
-      <Project>{673005d9-4078-4306-b6d6-8d80ec9521c1}</Project>
-      <Name>DiamondCostCalculator.DependencyResolver</Name>
+    <ProjectReference Include="..\DiamondCostCalculator.DocumentContract\DiamondCostCalculator.DocumentContract.csproj">
+      <Project>{969ee713-0b53-48ed-86e3-8fdbe175b8f9}</Project>
+      <Name>DiamondCostCalculator.DocumentContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiamondCostCalculator.DocumentProvider\DiamondCostCalculator.DocumentProvider.csproj">
+      <Project>{64fb7c38-9572-4c39-980e-18c358b789fc}</Project>
+      <Name>DiamondCostCalculator.DocumentProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\DiamondCostCalculator.Documents\DiamondCostCalculator.Documents.csproj">
       <Project>{4af39ea7-f1cd-41c5-b0a9-12df9a8f4b3d}</Project>

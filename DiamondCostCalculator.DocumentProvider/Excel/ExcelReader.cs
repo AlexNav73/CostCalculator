@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using DocumentFormat.OpenXml.Spreadsheet;
-using DTORow = DiamondCostCalculator.DocumentContract.Excel.DTO;
+using DTORow = DiamondCostCalculator.DocumentContract.DTO;
 
 namespace DiamondCostCalculator.DocumentProvider.Excel
 {
