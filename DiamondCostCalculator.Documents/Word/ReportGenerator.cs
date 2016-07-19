@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DiamondCostCalculator.Documents.Word
 {
-    public class ReportGenerator
+    public class ReportGenerator : IDisposable
     {
         private IReport _report;
 
@@ -22,6 +22,10 @@ namespace DiamondCostCalculator.Documents.Word
             _report.Header();
             _report.Body();
             _report.Footer();
+        }
+
+        public void Dispose()
+        {
             _report.Dispose();
         }
     }
