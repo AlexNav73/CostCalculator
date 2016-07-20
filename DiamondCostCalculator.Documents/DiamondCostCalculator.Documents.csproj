@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSV\CSVParser.cs" />
     <Compile Include="Excel\Documents\SmallDocument.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
