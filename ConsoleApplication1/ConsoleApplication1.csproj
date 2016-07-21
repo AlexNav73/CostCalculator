@@ -50,13 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DiamondCostCalculator.DependencyResolver\DiamondCostCalculator.DependencyResolver.csproj">
-      <Project>{673005d9-4078-4306-b6d6-8d80ec9521c1}</Project>
-      <Name>DiamondCostCalculator.DependencyResolver</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DiamondCostCalculator.Documents\DiamondCostCalculator.Documents.csproj">
-      <Project>{4af39ea7-f1cd-41c5-b0a9-12df9a8f4b3d}</Project>
-      <Name>DiamondCostCalculator.Documents</Name>
+    <ProjectReference Include="..\DiamondCostCalculator.Core\DiamondCostCalculator.Core.csproj">
+      <Project>{bbcb2b55-0fe6-4f54-aaee-a67ff4150f70}</Project>
+      <Name>DiamondCostCalculator.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

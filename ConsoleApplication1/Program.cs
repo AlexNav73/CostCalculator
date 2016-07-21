@@ -1,9 +1,7 @@
-﻿using System;
-using DiamondCostCalculator.DependencyResolver;
-using DiamondCostCalculator.Documents.Excel;
-using DiamondCostCalculator.Documents.Excel.Documents;
-using DiamondCostCalculator.Documents.Word;
-using DiamondCostCalculator.Documents.CSV;
+﻿using DiamondCostCalculator.Core;
+using DiamondCostCalculator.Core.Command.Implementations;
+using DiamondCostCalculator.Core.OrderInfo;
+using System;
 
 namespace ConsoleApplication1
 {
@@ -18,16 +16,9 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            //var excel = Resolver.Resolve<ExcelHelper>();
-            //excel.Open("123.xlsx", "Лист1");
-            //var doc = new SmallDocument(excel);
-
-            //using (var word = Resolver.Resolve<ReportGenerator>())
-            //    word.CreateReport("Test.docx");
-
-            //var list = CSVParser.Parse<MyClass>("qwe.csv");
-
-            var deps = new Deps();
+            var command = new DefaultCommand();
+            Console.WriteLine(command.Execute(new Order(Shape.Fantasy, Quality.A, Discount.BaguetteSquareTrilliant, "Red", "Clean")));
+            Console.ReadKey();
         }
     }
 }
