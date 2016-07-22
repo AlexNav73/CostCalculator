@@ -17,9 +17,7 @@ namespace DiamondCostCalculator.DependencyResolver
             Bind<IExcelDocument>().To<ExcelDocument>();
             Bind<ExcelHelper>().ToSelf();
 
-            Bind<IWordReportCreator>().To<WordReportCreator>();
-            Bind<IReport>().To<DefaultReport>();
-            Bind<ReportGenerator>().ToSelf();
+            Bind<IWordProcessor>().To<WordProcessor>();
         }
     }
 }

@@ -7,26 +7,14 @@ using System.Text;
 
 namespace DiamondCostCalculator.Documents.Word
 {
-    public class ReportGenerator : IDisposable
+    public class ReportGenerator
     {
-        private IReport _report;
-
-        public ReportGenerator(IReport report)
+        public void CreateReport(string fileName, ReportType type, IWordProcessor creator)
         {
-            _report = report;
-        }
-
-        public void CreateReport(string fileName)
-        {
-            _report.Open(fileName);
-            _report.Header();
-            _report.Body();
-            _report.Footer();
-        }
-
-        public void Dispose()
-        {
-            _report.Dispose();
+            creator.LoadTemplate(fileName);
+            var report = ReportFactory.Create(type);
+            report.BuildReport(creator);
+            creator.Save();
         }
     }
 }

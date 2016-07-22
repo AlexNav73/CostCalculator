@@ -57,8 +57,8 @@ namespace DiamondCostCalculator.DocumentProvider.Excel
                 case CellValues.String:
                 case CellValues.InlineString:
                 case CellValues.Error:
-                    throw new InvalidOperationException(
-                        string.Format("Cell {0} has inappropriate data type.", cell.CellReference.Value));
+                    throw new NotSupportedException(
+                        string.Format("Cell {0} has not supported data type.", cell.CellReference.Value));
             }
 
             return null;

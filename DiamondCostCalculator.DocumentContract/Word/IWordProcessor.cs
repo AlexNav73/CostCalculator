@@ -6,10 +6,11 @@ using System.Text;
 
 namespace DiamondCostCalculator.DocumentContract.Word
 {
-    public interface IWordReportCreator : IDisposable
+    public interface IWordProcessor : IDisposable
     {
-        IWordReportCreator Open(string fileName);
+        void LoadTemplate(string fileName);
+        IEnumerable<string> GetTokens();
+        void AddTable(IEnumerable<IEnumerable<string>> rows);
         void Save();
-        IWordReportCreator AddTable(ICollection<Row> rows);
     }
 }

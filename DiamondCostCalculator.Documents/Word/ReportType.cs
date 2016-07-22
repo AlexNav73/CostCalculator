@@ -5,11 +5,8 @@ using System.Text;
 
 namespace DiamondCostCalculator.Documents.Word
 {
-    public interface IReport : IDisposable
+    public enum ReportType
     {
-        void Open(string fileName);
-        void Header();
-        void Body();
-        void Footer();
+        Conclusion
     }
 }
