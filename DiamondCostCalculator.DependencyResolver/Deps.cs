@@ -1,5 +1,5 @@
-﻿using DiamondCostCalculator.Documents.Excel;
-using DiamondCostCalculator.Documents.Word;
+﻿using DiamondCostCalculator.DocumentContract.Word;
+using DiamondCostCalculator.Documents.Excel;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,6 @@ namespace DiamondCostCalculator.DependencyResolver
         public ExcelHelper Excel { get; set; }
 
         [Inject]
-        public ReportGenerator Word { get; set; }
+        public IWordProcessor Word { get; set; }
     }
 }

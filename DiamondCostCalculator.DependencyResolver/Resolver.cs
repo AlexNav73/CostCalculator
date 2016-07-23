@@ -20,5 +20,10 @@ namespace DiamondCostCalculator.DependencyResolver
         {
             return _kernel.Get<T>();
         }
+
+        public static T Resolve<T>(Type type)
+        {
+            return (T)_kernel.Get(type);
+        }
     }
 }

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiamondCostCalculator.Documents.Word
+namespace DiamondCostCalculator.Reporting
 {
     public class ReportGenerator
     {
         public void CreateReport(string fileName, ReportType type, IWordProcessor creator)
         {
-            creator.LoadTemplate(fileName);
+            creator.Load(fileName);
             var report = ReportFactory.Create(type);
             report.BuildReport(creator);
             creator.Save();

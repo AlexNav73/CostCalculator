@@ -1,4 +1,5 @@
-﻿using DiamondCostCalculator.DocumentContract.DTO;
+﻿using DiamondCostCalculator.DocumentContract.Commands;
+using DiamondCostCalculator.DocumentContract.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,8 @@ namespace DiamondCostCalculator.DocumentContract.Word
 {
     public interface IWordProcessor : IDisposable
     {
-        void LoadTemplate(string fileName);
-        IEnumerable<string> GetTokens();
-        void AddTable(IEnumerable<IEnumerable<string>> rows);
+        void Load(string fileName);
+        void ApplyCommands(IDictionary<string, ICommand> commands);
         void Save();
     }
 }

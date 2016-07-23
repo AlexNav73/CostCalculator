@@ -89,6 +89,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\InsertTableCommand.cs" />
     <Compile Include="Excel\ExcelDocument.cs" />
     <Compile Include="Excel\ExcelReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

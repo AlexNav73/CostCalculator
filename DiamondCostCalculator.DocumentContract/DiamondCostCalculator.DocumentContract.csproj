@@ -81,10 +81,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CmdConfiguration.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\Commands.cs" />
     <Compile Include="DTO\Cell.cs" />
     <Compile Include="DTO\Row.cs" />
     <Compile Include="Excel\IExcelDocument.cs" />

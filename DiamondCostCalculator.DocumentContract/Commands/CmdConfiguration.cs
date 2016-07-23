@@ -4,23 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace DiamondCostCalculator.Documents.Word.Commands
+namespace DiamondCostCalculator.DocumentContract.Commands
 {
     [XmlRoot("commandConfig")]
-    internal class CommandConfiguration
+    public class CmdConfiguration
     {
         [XmlArray("commands")]
         [XmlArrayItem("command")]
         public List<CommandData> Commands;
     }
 
-    internal class CommandData
+    public class CommandData
     {
         [XmlAttribute("Token")]
         public string Token { get; set; }
-        [XmlAttribute("name")]
-        public string Name { get; set; }
-        [XmlAttribute("parameters")]
-        public string Params { get; set; }
+        [XmlAttribute("type")]
+        public string Type { get; set; }
     }
 }
