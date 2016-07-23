@@ -15,7 +15,7 @@ namespace DiamondCostCalculator.DocumentProvider.Commands
         public object Execute()
         {
             var table = WordHelper.CreateTableTemplate();
-            var rows = Context as ICollection<ICollection<string>>;
+            var rows = Context as List<List<string>>;
 
             foreach (ICollection<string> row in rows)
             {

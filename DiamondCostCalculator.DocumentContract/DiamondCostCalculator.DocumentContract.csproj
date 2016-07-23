@@ -93,6 +93,7 @@
     <Compile Include="Excel\IExcelReader.cs" />
     <Compile Include="IFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InterfaceHelper.cs" />
     <Compile Include="Word\IWordProcessor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

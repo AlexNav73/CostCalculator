@@ -1,7 +1,10 @@
-﻿using Ninject;
+﻿using DiamondCostCalculator.DocumentContract;
+using DiamondCostCalculator.DocumentProvider.Word;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace DiamondCostCalculator.DependencyResolver
@@ -21,9 +24,10 @@ namespace DiamondCostCalculator.DependencyResolver
             return _kernel.Get<T>();
         }
 
-        public static T Resolve<T>(Type type)
+        public static T Resolve<T>(string type)
         {
-            return (T)_kernel.Get(type);
+            var t = InterfaceHelper.GetInterfaceType(type);
+            return (T)_kernel.Get(t);
         }
     }
 }

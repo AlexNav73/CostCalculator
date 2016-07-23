@@ -14,8 +14,6 @@ namespace DiamondCostCalculator.Core.Command.Implementations
     {
         public double Execute(Order order)
         {
-            var deps = Resolver.Resolve<Deps>();
-
             //var excel = Resolver.Resolve<ExcelHelper>();
             //excel.Open("123.xlsx", "Лист1");
             //var doc = new SmallDocument(excel);
@@ -28,7 +26,7 @@ namespace DiamondCostCalculator.Core.Command.Implementations
             var generator = new ReportGenerator();
             using (var word = Resolver.Resolve<IWordProcessor>())
             {
-                generator.CreateReport("Conclusion", ReportType.Conclusion, word);
+                generator.CreateReport("Conclusion.docx", ReportType.Conclusion, word);
             }
             return default(double);
         }

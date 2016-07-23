@@ -11,10 +11,10 @@ namespace DiamondCostCalculator.Reporting
     {
         public void CreateReport(string fileName, ReportType type, IWordProcessor creator)
         {
-            //creator.Load(fileName);
             var report = ReportFactory.Create(type);
+            creator.Create(report.GetTemplateFilePath(), fileName);
             report.BuildReport(creator);
-            //creator.Save();
+            creator.Save();
         }
     }
 }

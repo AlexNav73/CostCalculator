@@ -9,7 +9,7 @@ namespace DiamondCostCalculator.DocumentContract.Word
 {
     public interface IWordProcessor : IDisposable
     {
-        void Load(string fileName);
+        void Create(string templFilem, string fileName);
         void ApplyCommands(IDictionary<string, ICommand> commands);
         void Save();
     }

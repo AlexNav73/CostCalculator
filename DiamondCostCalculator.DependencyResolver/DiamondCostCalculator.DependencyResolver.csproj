@@ -89,7 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies.cs" />
-    <Compile Include="Deps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolver.cs" />
   </ItemGroup>
@@ -101,10 +100,6 @@
     <ProjectReference Include="..\DiamondCostCalculator.DocumentProvider\DiamondCostCalculator.DocumentProvider.csproj">
       <Project>{64fb7c38-9572-4c39-980e-18c358b789fc}</Project>
       <Name>DiamondCostCalculator.DocumentProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DiamondCostCalculator.Documents\DiamondCostCalculator.Documents.csproj">
-      <Project>{4af39ea7-f1cd-41c5-b0a9-12df9a8f4b3d}</Project>
-      <Name>DiamondCostCalculator.Documents</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

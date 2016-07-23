@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using DiamondCostCalculator.DocumentContract.Commands;
+using System.IO;
 
 namespace DiamondCostCalculator.DocumentProvider.Word
 {
@@ -17,13 +18,55 @@ namespace DiamondCostCalculator.DocumentProvider.Word
     {
         private WordprocessingDocument _document;
         private Document _documentPart;
-        private Regex _tokenRegex = new Regex("##.*##");
 
-
-        public void Load(string fileName)
+        public void Create(string templFile, string fileName)
         {
+            File.Copy(templFile, fileName, true);
             _document = WordprocessingDocument.Open(fileName, true);
             _documentPart = _document.MainDocumentPart.Document;
+        }
+
+        private void SubstituteTokens(OpenXmlElement element, Func<string, OpenXmlElement> replace)
+        {
+            foreach (OpenXmlElement elem in element.Elements())
+            {
+                switch (elem.LocalName)
+                {
+                    case "t":
+                        var newElem = replace(elem.InnerText);
+                        if (newElem != null)
+                        {
+                            var oldElem = element.ReplaceChild(newElem, elem);
+                        }
+                        break;
+                    case "p":
+                        SubstituteTokens(elem, replace);
+                        break;
+
+                    case "cr":
+                    case "br":
+                    case "tab":
+                        break;
+
+                    default:
+                        SubstituteTokens(elem, replace);
+                        break;
+                }
+            }
+        }
+
+        public void ApplyCommands(IDictionary<string, ICommand> commands)
+        {
+            var tokens = commands.Keys;
+            SubstituteTokens(_documentPart.Body, (str) =>
+            {
+                var token = tokens.FirstOrDefault(t => str.Contains(t));
+                if (token != null)
+                {
+                    return (OpenXmlElement)commands[token].Execute();
+                }
+                return null;
+            });
         }
 
         public void Save()
@@ -35,36 +78,6 @@ namespace DiamondCostCalculator.DocumentProvider.Word
         {
             Save();
             _document.Dispose();
-        }
-
-        private void CollectTokens(List<string> tokens, OpenXmlElement elements)
-        {
-            foreach (OpenXmlElement element in elements.Elements())
-            {
-                switch (element.LocalName)
-                {
-                    case "t":
-                        //
-                        break;
-                    case "p":
-                        CollectTokens(tokens, element);
-                        break;
-
-                    case "cr":
-                    case "br":
-                    case "tab":
-                        break;
-
-                    default:
-                        CollectTokens(tokens, element);
-                        break;
-                }
-            }
-        }
-
-        public void ApplyCommands(IDictionary<string, ICommand> commands)
-        {
-            throw new NotImplementedException();
         }
     }
 }

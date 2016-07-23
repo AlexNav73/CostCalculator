@@ -1,4 +1,5 @@
 ﻿using DiamondCostCalculator.DependencyResolver;
+using DiamondCostCalculator.DocumentContract;
 using DiamondCostCalculator.DocumentContract.Commands;
 using DiamondCostCalculator.DocumentContract.Word;
 using System;
@@ -26,10 +27,7 @@ namespace DiamondCostCalculator.Reporting
 
         private void ReadCommands()
         {
-            var path = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
-                ReportsFolder, 
-                string.Format("{0}.xml", GetReportName()));
+            var path = GetFilePath(GetReportName(), "xml");
 
             CmdConfiguration configuration;
             using (var file = new FileStream(path, FileMode.Open))
@@ -37,17 +35,30 @@ namespace DiamondCostCalculator.Reporting
                 var serializer = new XmlSerializer(typeof(CmdConfiguration));
                 configuration = (CmdConfiguration)serializer.Deserialize(file);
             }
-            Commands = configuration.Commands.ToDictionary(c => c.Token, c => GetCommand(c.Type));
+            Commands = configuration.Commands.ToDictionary(c => c.Token, c => MakeCommand(c.Type));
         }
 
-        private ICommand GetCommand(string type)
+        private string GetFilePath(string file, string ext)
         {
-            return Resolver.Resolve<ICommand>(Type.GetInterface(type, false));
+            return Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
+                ReportsFolder, 
+                string.Format("{0}.{1}", file, ext));
+        }
+
+        public string GetTemplateFilePath()
+        {
+            return GetFilePath(GetReportName(), "docx");
+        }
+
+        private ICommand MakeCommand(string type)
+        {
+            return Resolver.Resolve<ICommand>(type);
         }
 
         protected ICommand GetCommand(Type cmdType)
         {
-            return Commands.First(c => c.Value.GetType() == cmdType).Value;
+            return Commands.First(c => c.Value.GetType().GetInterface(cmdType.Name) != null).Value;
         }
 
         public void BuildReport(IWordProcessor creator)

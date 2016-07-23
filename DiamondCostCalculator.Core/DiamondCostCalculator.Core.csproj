@@ -86,6 +86,9 @@
   <ItemGroup>
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\Implementations\DefaultCommand.cs" />
+    <Compile Include="CSV\CSVParser.cs" />
+    <Compile Include="Excel\Documents\SmallDocument.cs" />
+    <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="OrderInfo\Discount.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,10 +103,6 @@
     <ProjectReference Include="..\DiamondCostCalculator.DocumentContract\DiamondCostCalculator.DocumentContract.csproj">
       <Project>{969EE713-0B53-48ED-86E3-8FDBE175B8F9}</Project>
       <Name>DiamondCostCalculator.DocumentContract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DiamondCostCalculator.Documents\DiamondCostCalculator.Documents.csproj">
-      <Project>{4af39ea7-f1cd-41c5-b0a9-12df9a8f4b3d}</Project>
-      <Name>DiamondCostCalculator.Documents</Name>
     </ProjectReference>
     <ProjectReference Include="..\DiamondCostCalculator.Reporting\DiamondCostCalculator.Reporting.csproj">
       <Project>{7fbb0e2d-9721-44ea-97f8-3d32e8519659}</Project>
