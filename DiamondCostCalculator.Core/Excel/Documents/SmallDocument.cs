@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DiamondCostCalculator.Documents.Excel.Documents
+namespace DiamondCostCalculator.Core.Excel.Documents
 {
     public class SmallDocument
     {

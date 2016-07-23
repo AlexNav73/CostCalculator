@@ -11,9 +11,9 @@ using System.Xml.Serialization;
 
 namespace DiamondCostCalculator.Reporting
 {
-    internal abstract class Report
+    public abstract class Report
     {
-        private const string ReportTemplateFolder = "ReportTemplates";
+        private const string ReportsFolder = "Reports";
 
         private char[] separator = new[] { ';' };
         protected Dictionary<string, ICommand> Commands;
@@ -26,9 +26,12 @@ namespace DiamondCostCalculator.Reporting
 
         private void ReadCommands()
         {
+            var path = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
+                ReportsFolder, 
+                string.Format("{0}.xml", GetReportName()));
+
             CmdConfiguration configuration;
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ReportTemplateFolder, GetReportName());
-            path = string.Format("{0}.xml", path);
             using (var file = new FileStream(path, FileMode.Open))
             {
                 var serializer = new XmlSerializer(typeof(CmdConfiguration));
@@ -39,7 +42,7 @@ namespace DiamondCostCalculator.Reporting
 
         private ICommand GetCommand(string type)
         {
-            return Resolver.Resolve<ICommand>(Type.GetType(type));
+            return Resolver.Resolve<ICommand>(Type.GetInterface(type, false));
         }
 
         protected ICommand GetCommand(Type cmdType)

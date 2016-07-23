@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace DiamondCostCalculator.Documents.CSV
+namespace DiamondCostCalculator.Core.CSV
 {
     public static class CSVParser
     {

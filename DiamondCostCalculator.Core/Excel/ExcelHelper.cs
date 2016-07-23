@@ -3,7 +3,7 @@ using DiamondCostCalculator.DocumentContract;
 using DiamondCostCalculator.DocumentContract.DTO;
 using DiamondCostCalculator.DocumentContract.Excel;
 
-namespace DiamondCostCalculator.Documents.Excel
+namespace DiamondCostCalculator.Core.Excel
 {
     public class ExcelHelper
     {

@@ -7,7 +7,7 @@ using DiamondCostCalculator.DocumentContract.Commands;
 
 namespace DiamondCostCalculator.Reporting.Reports
 {
-    internal class ConclusionReport : Report
+    public class ConclusionReport : Report
     {
         protected override string GetReportName()
         {
