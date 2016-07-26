@@ -16,7 +16,6 @@ namespace DiamondCostCalculator.Reporting
     {
         private const string ReportsFolder = "Reports";
 
-        private char[] separator = new[] { ';' };
         protected Dictionary<string, ICommand> Commands;
 
         public Report()
@@ -67,6 +66,5 @@ namespace DiamondCostCalculator.Reporting
         }
 
         protected abstract string GetReportName();
-        protected abstract void SetupCommands();
     }
 }

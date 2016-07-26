@@ -14,17 +14,10 @@ namespace DiamondCostCalculator.Reporting.Reports
             return ReportType.Conclusion.ToString();
         }
 
-        protected override void SetupCommands()
+        public void InsertTable(List<List<string>> data)
         {
             var insertTable = GetCommand(typeof(ITableCommand));
-            insertTable.Context = new List<List<string>>()
-            {
-                new List<string>() { "11", "12", "13" },
-                new List<string>() { "21", "22", "23" },
-                new List<string>() { "31", "32", "33" },
-                new List<string>() { "41", "42", "43" },
-                new List<string>() { "51", "52", "53" }
-            };
+            insertTable.Context = data;
         }
     }
 }

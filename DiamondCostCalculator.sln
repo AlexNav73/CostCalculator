@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCostCalculator.DocumentContract", "DiamondCostCalculator.DocumentContract\DiamondCostCalculator.DocumentContract.csproj", "{969EE713-0B53-48ED-86E3-8FDBE175B8F9}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCostCalculator.DependencyResolver", "DiamondCostCalculator.DependencyResolver\DiamondCostCalculator.DependencyResolver.csproj", "{673005D9-4078-4306-B6D6-8D80EC9521C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCostCalculator.Core", "DiamondCostCalculator.Core\DiamondCostCalculator.Core.csproj", "{BBCB2B55-0FE6-4F54-AAEE-A67FF4150F70}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCostCalculator.LocalizationEn", "DiamondCostCalculator.LocalizationEn\DiamondCostCalculator.LocalizationEn.csproj", "{FCA82364-51CD-4B05-B2A9-A975F105AE3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCostCalculator.Reporting", "DiamondCostCalculator.Reporting\DiamondCostCalculator.Reporting.csproj", "{7FBB0E2D-9721-44EA-97F8-3D32E8519659}"
 EndProject
@@ -43,10 +41,6 @@ Global
 		{BBCB2B55-0FE6-4F54-AAEE-A67FF4150F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBCB2B55-0FE6-4F54-AAEE-A67FF4150F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBCB2B55-0FE6-4F54-AAEE-A67FF4150F70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCA82364-51CD-4B05-B2A9-A975F105AE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCA82364-51CD-4B05-B2A9-A975F105AE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCA82364-51CD-4B05-B2A9-A975F105AE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCA82364-51CD-4B05-B2A9-A975F105AE3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FBB0E2D-9721-44EA-97F8-3D32E8519659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FBB0E2D-9721-44EA-97F8-3D32E8519659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FBB0E2D-9721-44EA-97F8-3D32E8519659}.Release|Any CPU.ActiveCfg = Release|Any CPU

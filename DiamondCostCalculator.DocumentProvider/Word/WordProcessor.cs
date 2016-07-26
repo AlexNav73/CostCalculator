@@ -8,9 +8,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
 using DiamondCostCalculator.DocumentContract.Word;
-using DiamondCostCalculator.DocumentProvider.Word.Helpers;
 using DiamondCostCalculator.DocumentContract.Commands;
-using DiamondCostCalculator.DocumentProvider.Commands;
 
 namespace DiamondCostCalculator.DocumentProvider.Word
 {
@@ -19,9 +17,8 @@ namespace DiamondCostCalculator.DocumentProvider.Word
         private WordprocessingDocument _document;
         private Document _documentPart;
 
-        public void Create(string templFile, string fileName)
+        public void Open(string fileName)
         {
-            File.Copy(templFile, fileName, true);
             _document = WordprocessingDocument.Open(fileName, true);
             _documentPart = _document.MainDocumentPart.Document;
         }

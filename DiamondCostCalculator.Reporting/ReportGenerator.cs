@@ -2,19 +2,20 @@
 using DiamondCostCalculator.DocumentContract.Word;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
 namespace DiamondCostCalculator.Reporting
 {
-    public class ReportGenerator
+    public static class ReportGenerator
     {
-        public void CreateReport(string fileName, ReportType type)
+        public static void CreateReport(string fileName, Report report)
         {
             using (var word = Container.Resolve<IWordProcessor>())
             {
-                var report = ReportFactory.Create(type);
-                word.Create(report.GetTemplateFilePath(), fileName);
+                File.Copy(report.GetTemplateFilePath(), fileName, true);
+                word.Open(fileName);
                 report.BuildReport(word);
             }
         }

@@ -28,8 +28,16 @@ namespace DiamondCostCalculator.Core.Command.Implementations
             //var excel = new ExcelHelper();
             //var t = excel.Read("123.xlsx");
 
-            var generator = new ReportGenerator();
-            generator.CreateReport("Conclusion.docx", ReportType.Conclusion);
+            var report = new ConclusionReport();
+            report.InsertTable(new List<List<string>>()
+            {
+                new List<string>() { "11", "12", "13" },
+                new List<string>() { "21", "22", "23" },
+                new List<string>() { "31", "32", "33" },
+                new List<string>() { "41", "42", "43" },
+                new List<string>() { "51", "52", "53" }
+            });
+            ReportGenerator.CreateReport("Conclusion.docx", report);
 
             return default(double);
         }
