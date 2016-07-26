@@ -4,79 +4,33 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using DocumentFormat.OpenXml.Spreadsheet;
-using DTORow = DiamondCostCalculator.DocumentContract.DTO;
+using System.Data;
 
 namespace DiamondCostCalculator.DocumentProvider.Excel
 {
-    public class ExcelReader : IExcelReader
+    public class ExcelReader : IExcelReader<SheetData>
     {
-        private IEnumerator<Row> _rows = null;
-
-        public IEnumerator<DTORow.Row> GetEnumerator() { return this; }
-        public DTORow.Row Current { get { return Convert(_rows.Current); } }
-        object IEnumerator.Current { get { return Current; } }
-
-        public ExcelReader(SheetData sheet)
+        public DataTable ReadSheet(SheetData sheet)
         {
-            _rows = sheet.Elements<Row>().GetEnumerator();
-        }
+            var table = new DataTable();
+            var stringType = typeof(string);
 
-        private DTORow.Row Convert(Row row)
-        {
-            return new DTORow.Row()
+            table.Columns.Add(String.Empty, stringType);
+            foreach (var headerCell in sheet.Elements<Row>().First().Elements<Cell>())
+                table.Columns.Add(headerCell.InnerText, stringType);
+
+            foreach(var row in sheet.Elements<Row>().Skip(1))
             {
-                Cells = row.Elements<Cell>()
-                           .Select(c => new DTORow.Cell(GetCellValue(c)))
-                           .ToList()
-            };
-        }
+                var newRow = table.NewRow();
+                int j = 0;
 
-        private object GetCellValue(Cell cell)
-        {
-            var cellValue = cell.CellValue != null ? cell.CellValue.InnerText : String.Empty;
+                foreach (var cell in row.Elements<Cell>())
+                    newRow[j++] = cell.InnerText;
 
-            if (cell.DataType == null)
-            {
-                double numValue;
-                if (double.TryParse(cellValue, out numValue))
-                    return numValue;
-
-                DateTime dateValue;
-                if (DateTime.TryParse(cellValue, out dateValue))
-                    return dateValue;
-
-                return null;
+                table.Rows.Add(newRow);
             }
 
-            var cellType = cell.DataType.Value;
-
-            switch (cellType)
-            {
-                case CellValues.Boolean:
-                case CellValues.SharedString:
-                case CellValues.String:
-                case CellValues.InlineString:
-                case CellValues.Error:
-                    throw new NotSupportedException(
-                        string.Format("Cell {0} has not supported data type.", cell.CellReference.Value));
-            }
-
-            return null;
-        }
-
-        public void Dispose()
-        {
-            _rows.Dispose();
-        }
-
-        public bool MoveNext()
-        {
-            return _rows.MoveNext();
-        }
-
-        public void Reset()
-        {
-            _rows.Reset();
+            return table;
         }
     }
 }

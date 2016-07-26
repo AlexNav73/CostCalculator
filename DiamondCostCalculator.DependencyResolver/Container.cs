@@ -9,11 +9,11 @@ using System.Text;
 
 namespace DiamondCostCalculator.DependencyResolver
 {
-    public static class Resolver
+    public static class Container
     {
         private static StandardKernel _kernel = null;
 
-        static Resolver()
+        static Container()
         {
             _kernel = new StandardKernel();
             _kernel.Load(new Dependencies());
@@ -24,10 +24,14 @@ namespace DiamondCostCalculator.DependencyResolver
             return _kernel.Get<T>();
         }
 
+        public static T Resolve<T>(Type type)
+        {
+            return (T)_kernel.Get(type);
+        }
+
         public static T Resolve<T>(string type)
         {
-            var t = InterfaceHelper.GetInterfaceType(type);
-            return (T)_kernel.Get(t);
+            return (T)_kernel.Get(InterfaceHelper.GetInterfaceType(type));
         }
     }
 }

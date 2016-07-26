@@ -1,4 +1,6 @@
-﻿using DiamondCostCalculator.DependencyResolver;
+﻿using DiamondCostCalculator.Core.Excel;
+using DiamondCostCalculator.DependencyResolver;
+using DiamondCostCalculator.DocumentContract.Excel;
 using DiamondCostCalculator.DocumentContract.Word;
 using DiamondCostCalculator.Reporting;
 using DiamondCostCalculator.Reporting.Reports;
@@ -23,11 +25,12 @@ namespace DiamondCostCalculator.Core.Command.Implementations
 
             //var list = CSVParser.Parse<MyClass>("qwe.csv");
 
+            //var excel = new ExcelHelper();
+            //var t = excel.Read("123.xlsx");
+
             var generator = new ReportGenerator();
-            using (var word = Resolver.Resolve<IWordProcessor>())
-            {
-                generator.CreateReport("Conclusion.docx", ReportType.Conclusion, word);
-            }
+            generator.CreateReport("Conclusion.docx", ReportType.Conclusion);
+
             return default(double);
         }
     }

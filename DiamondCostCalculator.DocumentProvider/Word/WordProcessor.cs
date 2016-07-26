@@ -1,16 +1,16 @@
-﻿using DiamondCostCalculator.DocumentContract.DTO;
-using DiamondCostCalculator.DocumentContract.Word;
-using DiamondCostCalculator.DocumentProvider.Word.Helpers;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+
+using DiamondCostCalculator.DocumentContract.Word;
+using DiamondCostCalculator.DocumentProvider.Word.Helpers;
 using DiamondCostCalculator.DocumentContract.Commands;
-using System.IO;
+using DiamondCostCalculator.DocumentProvider.Commands;
 
 namespace DiamondCostCalculator.DocumentProvider.Word
 {
@@ -35,9 +35,7 @@ namespace DiamondCostCalculator.DocumentProvider.Word
                     case "t":
                         var newElem = replace(elem.InnerText);
                         if (newElem != null)
-                        {
-                            var oldElem = element.ReplaceChild(newElem, elem);
-                        }
+                            element.Parent.Parent.ReplaceChild(newElem, elem.Parent.Parent);
                         break;
                     case "p":
                         SubstituteTokens(elem, replace);
@@ -62,9 +60,7 @@ namespace DiamondCostCalculator.DocumentProvider.Word
             {
                 var token = tokens.FirstOrDefault(t => str.Contains(t));
                 if (token != null)
-                {
                     return (OpenXmlElement)commands[token].Execute();
-                }
                 return null;
             });
         }

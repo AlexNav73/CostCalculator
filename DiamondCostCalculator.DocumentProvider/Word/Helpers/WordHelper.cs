@@ -12,9 +12,7 @@ namespace DiamondCostCalculator.DocumentProvider.Word.Helpers
                 new TopBorder() { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
                 new BottomBorder() { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
                 new LeftBorder() { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                new RightBorder() { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                new InsideHorizontalBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                new InsideVerticalBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 }
+                new RightBorder() { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 }
             ));
             table.AppendChild(props);
             return table;

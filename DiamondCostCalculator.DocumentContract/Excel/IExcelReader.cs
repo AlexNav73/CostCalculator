@@ -1,10 +1,10 @@
-﻿using DiamondCostCalculator.DocumentContract.DTO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 
 namespace DiamondCostCalculator.DocumentContract.Excel
 {
-    public interface IExcelReader : IEnumerator<Row>
+    public interface IExcelReader<TSheet>
     {
-        IEnumerator<Row> GetEnumerator();
+        DataTable ReadSheet(TSheet sheet);
     }
 }

@@ -87,8 +87,8 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\Implementations\DefaultCommand.cs" />
     <Compile Include="CSV\CSVParser.cs" />
-    <Compile Include="Excel\Documents\SmallDocument.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
+    <Compile Include="Excel\ExcelTable.cs" />
     <Compile Include="OrderInfo\Discount.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

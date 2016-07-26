@@ -53,7 +53,7 @@ namespace DiamondCostCalculator.Reporting
 
         private ICommand MakeCommand(string type)
         {
-            return Resolver.Resolve<ICommand>(type);
+            return Container.Resolve<ICommand>(type);
         }
 
         protected ICommand GetCommand(Type cmdType)

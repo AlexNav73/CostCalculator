@@ -12,7 +12,8 @@ namespace DiamondCostCalculator.DependencyResolver
     {
         public override void Load()
         {
-            Bind<IExcelReader>().To<ExcelReader>();
+            Bind(typeof(IExcelReader<>)).To<ExcelReader>();
+
             Bind<IExcelDocument>().To<ExcelDocument>();
             Bind<IWordProcessor>().To<WordProcessor>();
             Bind<ITableCommand>().To<InsertTableCommand>();

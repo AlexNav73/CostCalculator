@@ -1,5 +1,4 @@
 ﻿using DiamondCostCalculator.DocumentContract.Commands;
-using DiamondCostCalculator.DocumentContract.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

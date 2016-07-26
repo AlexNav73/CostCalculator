@@ -87,8 +87,6 @@
     <Compile Include="Commands\CmdConfiguration.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\Commands.cs" />
-    <Compile Include="DTO\Cell.cs" />
-    <Compile Include="DTO\Row.cs" />
     <Compile Include="Excel\IExcelDocument.cs" />
     <Compile Include="Excel\IExcelReader.cs" />
     <Compile Include="IFrom.cs" />

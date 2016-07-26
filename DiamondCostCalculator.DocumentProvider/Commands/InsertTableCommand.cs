@@ -1,10 +1,9 @@
-﻿using DiamondCostCalculator.DocumentContract.Commands;
-using DiamondCostCalculator.DocumentProvider.Word.Helpers;
-using DocumentFormat.OpenXml.Drawing;
-using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+using DiamondCostCalculator.DocumentContract.Commands;
+using DiamondCostCalculator.DocumentProvider.Word.Helpers;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace DiamondCostCalculator.DocumentProvider.Commands
 {
@@ -17,7 +16,7 @@ namespace DiamondCostCalculator.DocumentProvider.Commands
             var table = WordHelper.CreateTableTemplate();
             var rows = Context as List<List<string>>;
 
-            foreach (ICollection<string> row in rows)
+            foreach (var row in rows)
             {
                 var tr = new TableRow();
 
@@ -37,7 +36,6 @@ namespace DiamondCostCalculator.DocumentProvider.Commands
                 table.Append(tr);
             }
 
-            //_documentPart.Body.Append(table);
             return table;
         }
     }

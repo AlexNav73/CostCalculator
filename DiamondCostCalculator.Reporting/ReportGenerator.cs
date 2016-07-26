@@ -1,4 +1,4 @@
-﻿using DiamondCostCalculator.DocumentContract.DTO;
+﻿using DiamondCostCalculator.DependencyResolver;
 using DiamondCostCalculator.DocumentContract.Word;
 using System;
 using System.Collections.Generic;
@@ -9,12 +9,14 @@ namespace DiamondCostCalculator.Reporting
 {
     public class ReportGenerator
     {
-        public void CreateReport(string fileName, ReportType type, IWordProcessor creator)
+        public void CreateReport(string fileName, ReportType type)
         {
-            var report = ReportFactory.Create(type);
-            creator.Create(report.GetTemplateFilePath(), fileName);
-            report.BuildReport(creator);
-            creator.Save();
+            using (var word = Container.Resolve<IWordProcessor>())
+            {
+                var report = ReportFactory.Create(type);
+                word.Create(report.GetTemplateFilePath(), fileName);
+                report.BuildReport(word);
+            }
         }
     }
 }
