@@ -84,8 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Command\Implementations\DefaultCommand.cs" />
     <Compile Include="CSV\CSVParser.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Excel\ExcelTable.cs" />
@@ -94,6 +92,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OrderInfo\Quality.cs" />
     <Compile Include="OrderInfo\Shape.cs" />
+    <Compile Include="ReportData\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DiamondCostCalculator.DependencyResolver\DiamondCostCalculator.DependencyResolver.csproj">

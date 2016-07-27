@@ -32,7 +32,8 @@ namespace DiamondCostCalculator.DocumentProvider.Word
                     case "t":
                         var newElem = replace(elem.InnerText);
                         if (newElem != null)
-                            element.Parent.Parent.ReplaceChild(newElem, elem.Parent.Parent);
+                            element.ReplaceChild(newElem, elem);
+                            //element.Parent.Parent.ReplaceChild(newElem, elem.Parent.Parent);
                         break;
                     case "p":
                         SubstituteTokens(elem, replace);

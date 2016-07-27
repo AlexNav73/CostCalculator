@@ -39,11 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeaderAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />
-    <Compile Include="ReportFactory.cs" />
-    <Compile Include="ReportGenerator.cs" />
     <Compile Include="Reports\ConclusionReport.cs" />
+    <Compile Include="ReportTable.cs" />
     <Compile Include="ReportType.cs" />
   </ItemGroup>
   <ItemGroup>

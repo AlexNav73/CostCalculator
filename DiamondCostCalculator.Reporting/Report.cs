@@ -21,7 +21,6 @@ namespace DiamondCostCalculator.Reporting
         public Report()
         {
             ReadCommands();
-            SetupCommands();
         }
 
         private void ReadCommands()
@@ -45,6 +44,16 @@ namespace DiamondCostCalculator.Reporting
                 string.Format("{0}.{1}", file, ext));
         }
 
+        public void Save(string fileName)
+        {
+            using (var word = Container.Resolve<IWordProcessor>())
+            {
+                File.Copy(GetTemplateFilePath(), fileName, true);
+                word.Open(fileName);
+                ExecuteCommands(word);
+            }
+        }
+
         public string GetTemplateFilePath()
         {
             return GetFilePath(GetReportName(), "docx");
@@ -60,7 +69,7 @@ namespace DiamondCostCalculator.Reporting
             return Commands.First(c => c.Value.GetType().GetInterface(cmdType.Name) != null).Value;
         }
 
-        public void BuildReport(IWordProcessor creator)
+        private void ExecuteCommands(IWordProcessor creator)
         {
             creator.ApplyCommands(Commands);
         }

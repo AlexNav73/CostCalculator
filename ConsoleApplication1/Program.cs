@@ -1,7 +1,6 @@
 ﻿using System;
 
 using DiamondCostCalculator.Core;
-using DiamondCostCalculator.Core.Command.Implementations;
 using DiamondCostCalculator.Core.OrderInfo;
 
 namespace ConsoleApplication1
@@ -10,8 +9,9 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            var command = new DefaultCommand();
-            Console.WriteLine(command.Execute(new Order(Shape.Fantasy, Quality.A, Discount.BaguetteSquareTrilliant, "Red", "Clean")));
+            var order = new Order(Shape.Fantasy, Quality.A, Discount.BaguetteSquareTrilliant, "Red", "Clean");
+            order.Test();
+
             Console.ReadKey();
         }
     }
